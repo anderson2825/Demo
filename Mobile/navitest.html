@@ -40,16 +40,16 @@
 	 <script  type="text/javascript" >
 	 	$(function() {
 	 		 var naviul=$('.naviul');
-	 		 var p,t=0;
+	 		 var p=0,t=0;
 	 		 $(window).scroll(function(){
-	 		 	 p=$(window).scrollTop();
-                if(t>0){
-                	console.log('向上滚动');
-                }else{
-                	console.log('向下滚动');
-                }
-
-                 setTimeout(function(){p=t},0)
+	 		 	 p=$(this).scrollTop();
+	 		 	 if(t<=p){
+                   console.log('aaa');
+	 		 	 }else{
+	 		 	 	console.log('bbb');
+	 		 	 }
+                 setTimeout(function(){t=p;},0)
+                  
 
 	 		 })
 	 	})

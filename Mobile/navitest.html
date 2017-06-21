@@ -76,7 +76,11 @@
 	 		 menu.click(function(){
 	 		 	  $('.menulist').css('left',0).show();
 	 		 	  $('.mask').show();
-
+                return false;
+	 		 })
+	 		 $('.mask').click(function(){
+                    $('.menulist').hide();
+                    return false;
 	 		 })
 
 

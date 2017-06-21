@@ -9,9 +9,16 @@
 	<style>
 		*{margin: 0; padding: 0;}
 		.divtest{height: 500px; width: 100%; background-color:blue; margin: 20px auto; }
-		.naviul{position: fixed; top: 0; left: 0; width: 100%; overflow:hidden; height: 30px; background-color: red;}
+		.naviul{position: fixed; top: 0; left: 0; width: 100%; overflow:hidden; height: 30px; background-color: red; display: none;}
 		.naviul ul{ height: 30px;   overflow-x: auto;    white-space: nowrap;}
 		.naviul li{list-style: none; color: #fff;  width: 100px;   line-height: 30px;   display: inline-block;   white-space: nowrap;}
+		.warp{position: relative;width: 100%; margin: 0 auto; z-index: 1000; }
+		.wrap:after {display: table;content: ""; line-height: 0; clear: both;}
+		.menuCate{position: absolute; top: 0; left: 0; bottom: 0; z-index: 998; background-color:#fff; }
+		.menulist{display: none; position: fixed; left:-250px; top: 0; bottom: 0; background-color: #fafafa; width: 24rem; overflow: hidden; overflow-y: auto; }
+		.menulist div{width: 100%; height: 50px; float: left;}
+		#menu{width: 50px; height: 50px; float: left; background-color:black; }
+		.mask{position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 996; background-color: #000; opacity: 0.6; display: none;}
 	</style>
 
 </head>
@@ -26,7 +33,7 @@
      	</ul>
      </div>
       <div class="divtest">
-      	
+      	<div id="menu"></div>
       </div>
       <div class="divtest">
       	
@@ -37,21 +44,41 @@
       <div class="divtest">
       	
       </div>
+      <div class="wrap">
+      	  <div class="menuCate">
+      	  	  <div class="menulist">
+      	  	  	   <div>32132</div>
+      	  	  	   <div>21132</div>
+      	  	  	   <div>32132</div>
+      	  	  	   <div>132132</div>
+      	  	  	   <div>321321</div>
+      	  	  </div>
+      	  </div>
+      </div>
+      <div class="mask"></div>
 	 <script  type="text/javascript" >
 	 	$(function() {
-	 		 var naviul=$('.naviul');
+	 		 var naviul=$('.naviul'),
+	 		      menu=$('#menu'),
+
 	 		 var p=0,t=0;
 	 		 $(window).scroll(function(){
 	 		 	 p=$(this).scrollTop();
 	 		 	 if(t<=p){
-                   console.log('aaa');
+                    naviul.hide();
 	 		 	 }else{
-	 		 	 	console.log('bbb');
+	 		 	 	 naviul.show();
 	 		 	 }
                  setTimeout(function(){t=p;},0)
-                  
+              });
+
+	 		 menu.click(function(){
+	 		 	  $('.menulist').css('left',0).show();
+	 		 	  $('.mask').show();
 
 	 		 })
+
+
 	 	})
 	 </script>
 </body>

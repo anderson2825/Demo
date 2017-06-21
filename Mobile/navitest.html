@@ -9,7 +9,9 @@
 	<style>
 		*{margin: 0; padding: 0;}
 		.divtest{height: 500px; width: 100%; background-color:blue; margin: 20px auto; }
-		.naviul{position: fixed; top: 0; left: 0; width: 100%; overflow-y: hidden; height: 30px;}
+		.naviul{position: fixed; top: 0; left: 0; width: 100%; overflow:hidden; height: 30px;}
+		.naviul ul{ height: 30px;   overflow-x: auto;    white-space: nowrap;}
+		.naviul li{list-style: none; color: #fff;  width: 100px;   line-height: 30px;   display: inline-block;   white-space: nowrap;}
 	</style>
 
 </head>
@@ -37,7 +39,13 @@
       </div>
 	 <script  type="text/javascript" >
 	 	$(function() {
-	 		alert("abcd");
+	 		 var naviul=$('.naviul');
+	 		 var p,t=0;
+	 		 $(window).scroll(function(){
+	 		 	 p=$(window).scrollTop();
+                 console.log(p);
+
+	 		 })
 	 	})
 	 </script>
 </body>

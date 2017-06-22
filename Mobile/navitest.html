@@ -19,6 +19,9 @@
 		.menulist div{width: 100%; height: 50px; float: left;}
 		#menu{width: 50px; height: 50px; float: left; background-color:black; }
 		.mask{position: fixed; top: 0; left: 0; bottom: 0; right: 0; z-index: 996; background-color: #000; opacity: 0.6; display: none;}
+    .btnTop{width: 40px; height:80px; background-color:green; color: #fff; font-size: 18px; position: fixed; bottom:20px; right: 0;  }
+    .btnTop span{width: 40px; height: 40px; display:block; }
+    .footbg{width: 100%; height: 50px; background-color: red;}
 	</style>
 
 </head>
@@ -44,6 +47,7 @@
       <div class="divtest">
       	
       </div>
+      <div class="footbg"></div>
       <div class="wrap">
       	  <div class="menuCate">
       	  	  <div class="menulist">
@@ -56,32 +60,47 @@
       	  </div>
       </div>
       <div class="mask"></div>
+      <div class="btnTop"><span class="topspan">Top</span><span  class="bottomspan">bottom</span> </div>
 	 <script  type="text/javascript" >
 	 	$(function() {
 	 		 var naviul=$('.naviul'),
 	 		      menu=$('#menu'),
+            menulist=$('.menulist'),
                   p=0,
                   t=0;
 	 		 
 	 		 $(window).scroll(function(){
 	 		 	 p=$(this).scrollTop();
 	 		 	 if(t<=p){
-                    naviul.hide();
+           naviul.hide(500);
 	 		 	 }else{
-	 		 	 	 naviul.show();
+	 		 	 	 naviul.show(500);
 	 		 	 }
-                 setTimeout(function(){t=p;},0)
+               setTimeout(function(){t=p;},0)
               });
 
-	 		 menu.click(function(){
-	 		 	  $('.menulist').css('left',0).show();
-	 		 	  $('.mask').show();
+	 		  menu.click(function(){  
+          var $left=($(window).width()- $('.divtest').width())/2;
+           if(menulist.is(':hidden')){
+              menulist.show().animate({
+                 'left':  $left 
+              });
+            $('.mask').show(); 
+             } 
+	 		    
                 return false;
 	 		 })
 	 		 $('.mask').click(function(){
-                    $('.menulist,.mask').hide();
+           $('.menulist,.mask').hide(500);
                     return false;
-	 		 })
+	 		 });
+       $('.topspan').click(function(){
+             $('body').animate({scrollTop:0},1000);
+       });
+        $('.bottomspan').click(function(){
+             $('body').animate({ scrollTop: $('.footbg').offset().top},1000);
+       });
+
 
 
 	 	})

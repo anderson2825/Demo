@@ -22,6 +22,44 @@
     .btnTop{width: 40px; height:80px; background-color:green; color: #fff; font-size: 18px; position: fixed; bottom:20px; right: 0;  }
     .btnTop span{width: 40px; height: 40px; display:block; }
     .footbg{width: 100%; height: 50px; background-color: red;}
+    .bounce{height: 40px; width: 100%; background-color:#010101;}
+    .bounceInup{width: 50px; height: 50px; display: block; background-color:gray; }
+    .animated{
+      animation-duration:1s; 
+      -webkit-animation-duration:1s; 
+      -webkit-animation-fill-mode:both; 
+      animation-fill-mode:both; 
+     }
+    .bounceInactived{
+      -webkit-animation-name:bounceInUp;
+      animation-name:bounceInUp; 
+    }
+    @keyframes bounceInUp{
+      0%{
+        opacity: 0;
+        transform:translateY(2000px); 
+        -webkit-transform:translateY(2000px); 
+        -ms-transform:translateY(2000px); 
+      }
+      60%{
+        opacity: 1;
+        transform:translateY(-30px); 
+        -webkit-transform:translateY(-30px); 
+        -ms-transform:translateY(-30px);  
+      }
+      80%{
+        opacity: 1;
+        transform:translateY(10px); 
+        -webkit-transform:translateY(10px); 
+        -ms-transform:translateY(10px);  
+      }
+      100%{
+        opacity: 1;
+        transform:translateY(0); 
+        -webkit-transform:translateY(0); 
+        -ms-transform:translateY(0);  
+      }
+    }
 	</style>
 
 </head>
@@ -47,6 +85,8 @@
       <div class="divtest">
       	
       </div>
+      <div class="bounce"></div>
+      <span class="bounceInup"></span>
       <div class="footbg"></div>
       <div class="wrap">
       	  <div class="menuCate">
@@ -66,6 +106,7 @@
 	 		 var naviul=$('.naviul'),
 	 		      menu=$('#menu'),
             menulist=$('.menulist'),
+            booer=true,
                   p=0,
                   t=0;
 	 		 
@@ -88,7 +129,7 @@
             $('.mask').show(); 
              } 
 	 		    
-                return false;
+              return false;
 	 		 })
 	 		 $('.mask').click(function(){
            $('.menulist,.mask').hide(500);
@@ -100,7 +141,17 @@
         $('.bottomspan').click(function(){
              $('body').animate({ scrollTop: $('.footbg').offset().top},1000);
        });
-
+       
+       $('.bounceInup').click(function(){
+             $('.bounce').addClass('bounceInactived animated');
+             setTimeout(removeclass,1000);
+           });
+       
+       function removeclass(){
+             $('.bounce').removeClass('bounceInactived animated');
+       }         
+       
+      
 
 
 	 	})
